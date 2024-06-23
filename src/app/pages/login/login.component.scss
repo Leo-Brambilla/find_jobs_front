@@ -1,0 +1,39 @@
+.form-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;    
+    background-color: #F5F5F5;
+    border-radius: 16px;
+    height: 74vh;
+  
+    .form-login {      
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 60%;
+  
+      .flex-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;        
+        width: 60%;
+        
+        .input-container {
+          width: 60%;
+          margin-bottom: 1.25em;
+        }
+        
+        button {
+          margin-top: 20px;
+        }
+      }
+    }
+  
+    .error-message {
+      margin-top: 16px;
+      color: red;
+      text-align: center;
+    }
+  }
+  
