@@ -1,0 +1,57 @@
+<div class="create-job-container">
+    <form [formGroup]="jobForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Título da Vaga</mat-label>
+        <input matInput formControlName="jobTitle">
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Requisitos</mat-label>
+        <input matInput formControlName="jobRequisitions">
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Número de Vagas</mat-label>
+        <input matInput type="number" formControlName="numberOfJobs">
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Data de Publicação</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="publicationDate">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Descrição da Vaga</mat-label>
+        <textarea matInput formControlName="jobDescription"></textarea>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Status da Vaga</mat-label>
+        <mat-select formControlName="jobStatus">
+          <mat-option value="ABERTO">Aberto</mat-option>
+          <mat-option value="FINALIZADO">Finalizado</mat-option>
+          <mat-option value="PAUSADO">Pausado</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Tipo da Vaga</mat-label>
+        <mat-select formControlName="jobType">
+          <mat-option value="ESTAGIO">Estágio</mat-option>
+          <mat-option value="JUNIOR">Júnior</mat-option>
+          <mat-option value="PLENO">Pleno</mat-option>
+          <mat-option value="SENIOR">Sênior</mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <mat-form-field appearance="fill">
+        <mat-label>Localização da Vaga</mat-label>
+        <input matInput formControlName="jobLocation">
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary" type="submit">Criar Vaga</button>
+    </form>
+  </div>
+  

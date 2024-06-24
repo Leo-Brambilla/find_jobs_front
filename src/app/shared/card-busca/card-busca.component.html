@@ -4,12 +4,10 @@
     <ul>
       <h1>{{ job.jobTitle }}</h1>
       <p><strong>Requisitos:</strong> {{ job.jobRequisitions }}</p>
-      <p><strong>Num. de Vagas:</strong> {{ job.numberOfJobs }} vagas</p>
-      <p><strong>Empresa:</strong> {{ job.company }}</p>
+      <p><strong>Num. de Vagas:</strong> {{ job.numberOfJobs }} vagas</p>      
       <p><strong>Status:</strong> {{ job.jobStatus }}</p>
       <p><strong>Nível:</strong> {{ job.jobType }}</p>
-      <p><strong>Local:</strong> {{ job.jobLocation }}</p>
-      <h2>Salário: R${{ job.payment | currency }}</h2>
+      <p><strong>Local:</strong> {{ job.jobLocation }}</p>      
     </ul>
   </mat-card-content>  
   <mat-accordion>
