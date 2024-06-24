@@ -17,6 +17,9 @@ import { CardDepoimentosComponent } from './shared/card-depoimentos/card-depoime
 import { FormBuscaComponent } from './shared/form-busca/form-busca.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthInterceptor } from './auth.interceptor';
+import { DateAdapter, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { DateFnsAdapter, MAT_DATE_FNS_FORMATS } from '@angular/material-date-fns-adapter';
+import { ptBR } from 'date-fns/locale';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -33,6 +36,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { CreateJobComponent } from './pages/create-job/create-job.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
 
 
 @NgModule({
@@ -47,7 +51,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     CardBuscaComponent,
     CardDepoimentosComponent,
     FormBuscaComponent,    
-    LoginComponent, CreateJobComponent,
+    LoginComponent, CreateJobComponent, ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -72,7 +76,10 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatSnackBarModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: DateAdapter, useClass: DateFnsAdapter },
+    { provide: MAT_DATE_LOCALE, useValue: ptBR },
+    { provide: MAT_DATE_FORMATS, useValue: MAT_DATE_FNS_FORMATS }
   ],
   bootstrap: [AppComponent]
 })

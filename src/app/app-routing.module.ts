@@ -26,6 +26,10 @@ const routes: Routes = [
     component: CreateJobComponent
   },
   {
+    path: 'edit-job/:id',
+    component: CreateJobComponent
+  },
+  {
     path: '**',
     redirectTo: 'login'
   }

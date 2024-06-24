@@ -20,5 +20,7 @@
   </mat-accordion>  
   <mat-card-actions>    
     <button mat-flat-button color="primary">Quero me Candidatar</button>
+    <button mat-flat-button color="primary" (click)="editJob(job)">Editar</button>
+    <button mat-flat-button color="warn" (click)="deleteJob(job)">Excluir</button>
   </mat-card-actions>
 </mat-card>
