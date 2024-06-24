@@ -15,7 +15,6 @@ import { HomeComponent } from './pages/home/home.component';
 import { CardBuscaComponent } from './shared/card-busca/card-busca.component';
 import { CardDepoimentosComponent } from './shared/card-depoimentos/card-depoimentos.component';
 import { FormBuscaComponent } from './shared/form-busca/form-busca.component';
-import { ModalComponent } from './shared/modal/modal.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthInterceptor } from './auth.interceptor';
 
@@ -31,6 +30,10 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatDateFnsModule } from '@angular/material-date-fns-adapter';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { CreateJobComponent } from './pages/create-job/create-job.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [
@@ -43,9 +46,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     HomeComponent,
     CardBuscaComponent,
     CardDepoimentosComponent,
-    FormBuscaComponent,
-    ModalComponent,
-    LoginComponent,
+    FormBuscaComponent,    
+    LoginComponent, CreateJobComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,6 +68,8 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatDateFnsModule,
     MatDialogModule,
     MatExpansionModule,
+    MatSelectModule,
+    MatSnackBarModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

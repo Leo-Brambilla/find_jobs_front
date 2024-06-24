@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ModalComponent } from '../modal/modal.component';
+
 
 
 @Component({
@@ -11,8 +11,5 @@ import { ModalComponent } from '../modal/modal.component';
 export class FormBuscaComponent {
   constructor(public dialog: MatDialog) {}
 
-  openDialog() {
-    this.dialog.open(ModalComponent)
-  }
 
 }

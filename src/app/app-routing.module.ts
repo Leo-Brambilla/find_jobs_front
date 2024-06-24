@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { AuthGuard } from './auth.guard';
+import { CreateJobComponent } from './pages/create-job/create-job.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,10 @@ const routes: Routes = [
     path: '', 
     redirectTo: 'login', 
     pathMatch: 'full' 
+  },
+  {
+    path: 'create-job',
+    component: CreateJobComponent
   },
   {
     path: '**',
