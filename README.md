@@ -1,27 +1,124 @@
-# JornadaMilhas
+# Find Jobs Application
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.0.
+## Configuração do Banco de Dados
 
-## Development server
+1. Instale o PostgreSQL.
+2. Crie um banco de dados com as propriedades contidas no `application.properties`:
+    ```properties
+    spring.datasource.url=jdbc:postgresql://localhost:5432/find_jobs
+    spring.datasource.username=seu_usuario
+    spring.datasource.password=sua_senha
+    spring.jpa.hibernate.ddl-auto=update
+    ```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+3. Atualize as propriedades no arquivo `application.properties` com suas credenciais do PostgreSQL.
 
-## Code scaffolding
+## Executando o Backend
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+1. Importe o projeto em sua IDE de preferência (IntelliJ, Eclipse, etc.).
+2. Execute a aplicação através da classe principal `FindJobsApplication`.
 
-## Build
+## Executando o Frontend
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1. Navegue até o diretório do frontend do projeto.
+2. Instale as dependências com `npm install`.
+3. Execute o comando `ng serve` para rodar a aplicação Angular.
+4. Acesse `http://localhost:4200` em seu navegador.
 
-## Running unit tests
+## Endpoints Disponíveis
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Autenticação
+- `POST /auth/login`: Login de usuário.
+- `POST /auth/signup`: Cadastro de usuário.
 
-## Running end-to-end tests
+### Vagas
+- `GET /jobs`: Listar todas as vagas.
+- `GET /jobs/search`: Buscar vagas por critérios.
+- `GET /jobs/{id}`: Buscar vaga por ID.
+- `POST /jobs`: Criar uma nova vaga (ADMIN).
+- `PUT /jobs/{id}`: Atualizar vaga (ADMIN).
+- `DELETE /jobs/{id}`: Deletar vaga (ADMIN).
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Candidaturas
+- `POST /applications`: Candidatar-se a uma vaga.
+- `GET /applications/user/{userId}`: Listar candidaturas de um usuário.
+- `GET /applications/job/{jobId}`: Listar candidaturas de uma vaga.
 
-## Further help
+### Usuários
+- `GET /users`: Listar todos os usuários.
+- `GET /users/{id}`: Buscar usuário por ID.
+- `PUT /users/{id}`: Atualizar usuário.
+- `DELETE /users/{id}`: Deletar usuário.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Testando a API
+
+### Usando Postman
+
+1. **Login**
+    - Endpoint: `POST /auth/login`
+    - Body:
+    ```json
+    {
+        "username": "seu_usuario",
+        "password": "sua_senha"
+    }
+    ```
+
+2. **Cadastro**
+    - Endpoint: `POST /auth/signup`
+    - Body:
+    ```json
+    {
+        "username": "novo_usuario",
+        "password": "nova_senha"
+    }
+    ```
+    - Query Param: `role=USER` ou `role=ADMIN`
+
+3. **Criar Vaga**
+    - Endpoint: `POST /jobs`
+    - Headers: `Authorization: Bearer {seu_token}`
+    - Body:
+    ```json
+    {
+        "jobTitle": "Desenvolvedor Java",
+        "jobRequisitions": "Spring Boot, REST API",
+        "numberOfJobs": 3,
+        "publicationDate": "2024-06-25T12:00:00",
+        "jobDescription": "Desenvolvimento de APIs em Spring Boot",
+        "jobStatus": "ABERTO",
+        "jobType": "SENIOR",
+        "jobLocation": "Remoto"
+    }
+    ```
+
+4. **Listar Vagas**
+    - Endpoint: `GET /jobs`
+    - Headers: `Authorization: Bearer {seu_token}`
+
+5. **Atualizar Vaga**
+    - Endpoint: `PUT /jobs/{id}`
+    - Headers: `Authorization: Bearer {seu_token}`
+    - Body:
+    ```json
+    {
+        "jobTitle": "Desenvolvedor Java",
+        "jobRequisitions": "Spring Boot, REST API",
+        "numberOfJobs": 3,
+        "publicationDate": "2024-06-25T12:00:00",
+        "jobDescription": "Desenvolvimento de APIs em Spring Boot",
+        "jobStatus": "ABERTO",
+        "jobType": "SENIOR",
+        "jobLocation": "Remoto"
+    }
+    ```
+
+6. **Deletar Vaga**
+    - Endpoint: `DELETE /jobs/{id}`
+    - Headers: `Authorization: Bearer {seu_token}`
+
+## Considerações Finais
+
+- O frontend possui funcionalidades de login e gerenciamento de vagas dependendo do papel do usuário.
+- O usuário com papel "ADMIN" pode criar, editar, listar e deletar vagas.
+- O usuário com papel "USER" pode apenas listar as vagas.
