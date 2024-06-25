@@ -23,11 +23,13 @@ const routes: Routes = [
   },
   {
     path: 'create-job',
-    component: CreateJobComponent
+    component: CreateJobComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'edit-job/:id',
-    component: CreateJobComponent
+    component: CreateJobComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: '**',

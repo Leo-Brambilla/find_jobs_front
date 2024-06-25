@@ -1,9 +1,9 @@
 <header class="app-header">
-    <mat-toolbar>
-        <img src="assets/imagens/find_jobs.svg" alt="Logo da Aplicação">
-        <span class="spacer"></span>     
-        <button mat-button routerLink="/create-job" color="primary">Criar Vaga</button>
-        <button mat-button routerLink="/home" color="primary">home</button>
-
-      </mat-toolbar>
-</header>  
+  <mat-toolbar>
+    <img src="assets/imagens/find_jobs.svg" alt="Logo da Aplicação">
+    <span class="spacer"></span>     
+    <button *ngIf="isAuthenticated()" mat-button (click)="logout()" color="primary">Sair</button>
+    <button *ngIf="isAdmin()" mat-button routerLink="/create-job" color="primary">Criar Vaga</button>
+    <button mat-button routerLink="/home" color="primary">Home</button>
+  </mat-toolbar>
+</header>

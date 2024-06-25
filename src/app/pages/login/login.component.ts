@@ -14,11 +14,9 @@ export class LoginComponent {
   constructor(private authService: AuthService, private router: Router) {}
 
   onSubmit() {
-    console.log('Tentativa de login com dados:', this.loginData);
 
     this.authService.login(this.loginData).subscribe({
-      next: () => {
-        console.log('Login bem-sucedido, redirecionando...');
+      next: () => {        
         this.router.navigate(['/home']);
       },
       error: (err) => {
