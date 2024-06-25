@@ -48,7 +48,7 @@ export class CardBuscaComponent implements OnInit {
           () => {
             console.log('Vaga excluída com sucesso', job);
             this.openSnackBar('Vaga excluída com sucesso', 'Fechar');
-            this.getJobs(); // Atualiza a lista de vagas após exclusão
+            this.getJobs();
           },
           error => {
             console.error('Erro ao excluir a vaga', error);
