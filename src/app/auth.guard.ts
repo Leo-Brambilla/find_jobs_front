@@ -16,9 +16,10 @@ export class AuthGuard implements CanActivate {
   ): Observable< boolean | UrlTree > | Promise < boolean | UrlTree > | boolean | UrlTree {
     const isLoggedIn = this.authService.isAuthenticated();
     const userRole = this.authService.getUserRole();
-    debugger
+    
 
-    if (isLoggedIn && userRole === 'ROLE_USER,ADMIN' || isLoggedIn && userRole === 'ROLE_USER,USER') {
+    if (isLoggedIn && (userRole === 'ROLE_USER' || userRole === 'ROLE_ADMIN' || userRole === 'ROLE_USER,ADMIN')) {
+      debugger
       return true;
     } else {
       this.router.navigate(['/login']);

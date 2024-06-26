@@ -37,6 +37,7 @@ import { CreateJobComponent } from './pages/create-job/create-job.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.component';
+import { RegisterComponent } from './pages/register/register.component';
 
 
 @NgModule({
@@ -51,7 +52,7 @@ import { ConfirmDialogComponent } from './shared/confirm-dialog/confirm-dialog.c
     CardBuscaComponent,
     CardDepoimentosComponent,
     FormBuscaComponent,    
-    LoginComponent, CreateJobComponent, ConfirmDialogComponent,
+    LoginComponent, CreateJobComponent, ConfirmDialogComponent, RegisterComponent,
   ],
   imports: [
     BrowserModule,

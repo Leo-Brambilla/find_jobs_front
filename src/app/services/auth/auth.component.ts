@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { jwtDecode } from 'jwt-decode';
@@ -15,7 +15,26 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
+  register(username: string, password: string): Observable<any> {
+    debugger
+    const user = {
+      username: username,
+      password: password,
+      enabled: true,
+      roles:['ADMIN']
+    };
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    return this.http.post(`${this.apiUrl}/signup?role=ROLE_USER`, user, { headers });
+
+  
+  }
+
   login(credentials: { username: string, password: string }): Observable<any> {
+    debugger
     return this.http.post(`${this.apiUrl}/login`, credentials, { responseType: 'text' }).pipe(
       tap((response: any) => {
         if (response) {
@@ -24,7 +43,7 @@ export class AuthService {
       })
     );
   }
-
+  
   logout() {
     localStorage.removeItem('token');
   }
