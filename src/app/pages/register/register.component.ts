@@ -17,8 +17,7 @@ export class RegisterComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {
-    debugger
+  ngOnInit(): void {    
     this.registerForm = this.fb.group({
       username: ['', [Validators.required]],
       password: ['', [Validators.required]],
@@ -32,8 +31,7 @@ export class RegisterComponent implements OnInit {
     return password === confirmPassword ? null : { passwordMismatch: true };
   }
   
-  onSubmit(): void {
-    debugger
+  onSubmit(): void {    
     if (this.registerForm.valid) {
       const { username, password } = this.registerForm.value;
       this.authService.register(username, password).subscribe({

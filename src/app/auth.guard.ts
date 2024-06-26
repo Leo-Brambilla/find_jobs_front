@@ -18,8 +18,7 @@ export class AuthGuard implements CanActivate {
     const userRole = this.authService.getUserRole();
     
 
-    if (isLoggedIn && (userRole === 'ROLE_USER' || userRole === 'ROLE_ADMIN' || userRole === 'ROLE_USER,ADMIN')) {
-      debugger
+    if (isLoggedIn && (userRole === 'ROLE_USER' || userRole === 'ROLE_ADMIN' || userRole === 'ROLE_USER,ADMIN')) {      
       return true;
     } else {
       this.router.navigate(['/login']);

@@ -15,8 +15,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  register(username: string, password: string): Observable<any> {
-    debugger
+  register(username: string, password: string): Observable<any> {    
     const user = {
       username: username,
       password: password,
@@ -33,8 +32,7 @@ export class AuthService {
   
   }
 
-  login(credentials: { username: string, password: string }): Observable<any> {
-    debugger
+  login(credentials: { username: string, password: string }): Observable<any> {    
     return this.http.post(`${this.apiUrl}/login`, credentials, { responseType: 'text' }).pipe(
       tap((response: any) => {
         if (response) {
