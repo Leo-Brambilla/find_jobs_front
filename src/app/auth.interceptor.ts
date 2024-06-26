@@ -5,8 +5,11 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {    
     const token = localStorage.getItem('token');
+    if (request.url.includes('/auth/signup') || request.url.includes('/auth/login')) {
+      return next.handle(request);
+    }
     if (token) {
       const cloned = request.clone({
         headers: request.headers.set('Authorization', `Bearer ${token}`)      
